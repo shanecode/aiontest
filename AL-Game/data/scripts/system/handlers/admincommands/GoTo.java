@@ -76,17 +76,17 @@ public class GoTo extends ChatCommand{
 			goTo(player, WorldMapType.ELTNEN.getId(), 2411, 2724, 361);
 		// Theobomos
 		else if (destination.equalsIgnoreCase("Theobomos"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 1398, 1557, 31);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 1398, 1557, 31);
 		else if (destination.equalsIgnoreCase("Jamanok") || destination.equalsIgnoreCase("Jamanok Inn"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 458, 1257, 127);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 458, 1257, 127);
 		else if (destination.equalsIgnoreCase("Meniherk"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 1396, 1560, 31);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 1396, 1560, 31);
 		else if (destination.equalsIgnoreCase("obsvillage"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 2234, 2284, 50);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 2234, 2284, 50);
 		else if (destination.equalsIgnoreCase("Josnack"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 901, 2774, 62);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 901, 2774, 62);
 		else if (destination.equalsIgnoreCase("Anangke"))
-			goTo(player, WorldMapType.THEOMOBOS.getId(), 2681, 847, 138);
+			goTo(player, WorldMapType.THEOBOMOS.getId(), 2681, 847, 138);
 		// Heiron
 		else if (destination.equalsIgnoreCase("Heiron"))
 			goTo(player, WorldMapType.HEIRON.getId(), 2540, 343, 411);
