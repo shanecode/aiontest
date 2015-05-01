@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <events_config>
-	<active>The Fortune Fayre;Doppelgangers;Ascension Energy;Festival Winter;Harvest Revel;Daru Days;Ardent heat;Ascension Energy Inventory;Ardent heat Inventory</active>
+	<active>The Fortune Fayre;Doppelgangers;Ascension Energy;Festival Winter;Harvest Revel;Daru Days;Ardent heat;Ascension Energy Inventory;Ardent heat Inventory;Event Empyrean Crucible</active>
   	<events>
 		<event name="The Fortune Fayre" start="2015-04-09T00:00:00+00:00" end="2015-05-23T00:00:00+00:00">
 			<quests>
@@ -345,6 +345,27 @@
 					</spawn>
                 </spawn_map>
 			</spawns>
-		</event>
+		</event>			     
+        <event name="Event Empyrean Crucible" start="2015-01-01T00:00:00+00:00" end="2016-12-31T00:00:00+00:00">
+            <quests>
+                <startable>80150;80151;80152;80153;80154;80155;80156;80157</startable>
+            </quests>
+            <spawns>
+                <!-- Cloister Of Kaisinel -->
+                <spawn_map map_id="110020000">
+                    <!-- Heltiness (Event Empyrean Crucible 2.7 NPC Normal lvl:60) -->
+                    <spawn npc_id="830247" pool="1" respawn_time="295">
+                        <spot h="31" z="1212.0759" y="1606.6387" x="2173.1985"/>
+                    </spawn>
+                </spawn_map>
+                <!-- Convent Of Marchutan -->
+                <spawn_map map_id="120020000">
+                    <!-- Kjander (Event Empyrean Crucible 2.7 NPC Normal lvl:60) -->
+                    <spawn npc_id="830248" pool="1" respawn_time="295">
+                        <spot h="54" z="271.38977" y="1416.1057" x="1519.7655"/>
+                    </spawn>
+                </spawn_map>
+            </spawns>
+        </event>        		
 	</events>
 </events_config>

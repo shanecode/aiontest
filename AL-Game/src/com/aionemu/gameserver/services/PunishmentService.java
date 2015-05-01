@@ -22,7 +22,6 @@ import java.util.concurrent.Future;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.dao.PlayerPunishmentsDAO;
-import com.aionemu.gameserver.global.additions.MessagerAddition;
 import com.aionemu.gameserver.model.TaskId;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_CAPTCHA;
@@ -112,7 +111,6 @@ public class PunishmentService {
 				ChatServer.getInstance().sendPlayerLogout(player);
 
 			player.setStartPrison(System.currentTimeMillis());
-                        MessagerAddition.announceAll(reason, 0);
 			TeleportService.teleportToPrison(player);
 			DAOManager.getDAO(PlayerPunishmentsDAO.class).punishPlayer(player, PunishmentType.PRISON, reason);
 		}

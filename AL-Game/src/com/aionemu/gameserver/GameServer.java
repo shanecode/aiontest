@@ -32,9 +32,8 @@ import com.aionemu.gameserver.configs.main.*;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.DataManager;
-import com.aionemu.gameserver.global.program.GlobalSocks;
-import com.aionemu.gameserver.global.program.NetSocks;
 import com.aionemu.gameserver.instance.InstanceEngine;
+import com.aionemu.gameserver.model.GameEngine;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.siege.Influence;
 import com.aionemu.gameserver.network.BannedMacManager;
@@ -43,7 +42,6 @@ import com.aionemu.gameserver.network.chatserver.ChatServer;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.*;
-import com.aionemu.gameserver.services.tvt.TvtService;
 import com.aionemu.gameserver.services.abyss.AbyssRankUpdateService;
 import com.aionemu.gameserver.services.drop.DropRegistrationService;
 import com.aionemu.gameserver.services.instance.DredgionService2;
@@ -131,7 +129,8 @@ public class GameServer {
 					logFile.delete();
 				}
 				out.close();
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 			}
 		}
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -140,7 +139,8 @@ public class GameServer {
 			configurator.setContext(lc);
 			lc.reset();
 			configurator.doConfigure("config/slf4j-logback.xml");
-		} catch (JoranException je) {
+		}
+		catch (JoranException je) {
 			throw new RuntimeException("Failed to configure loggers, shutting down...", je);
 		}
 	}
@@ -243,8 +243,7 @@ public class GameServer {
 			EventService.getInstance().start();
 		if (WeddingsConfig.WEDDINGS_ENABLE)
 			WeddingService.getInstance();
-        Util.printSection("[Ascension] Events:");
-        TvtService.getInstance().initTvt();       
+
 		AdminService.getInstance();
 		PlayerTransferService.getInstance();
 	 
@@ -271,8 +270,10 @@ public class GameServer {
 						ASMOS_COUNT = DAOManager.getDAO(PlayerDAO.class).getCharacterCountForRace(Race.ASMODIANS);
 						ELYOS_COUNT = DAOManager.getDAO(PlayerDAO.class).getCharacterCountForRace(Race.ELYOS);
 						computeRatios();
-					} catch (Exception e) {
-					} finally {
+					}
+					catch (Exception e) {
+					}
+					finally {
 						lock.unlock();
 					}
 					displayRatios(false);
@@ -357,11 +358,6 @@ public class GameServer {
 			hook.onStartup();
 	}
 
-	public interface StartupHook {
-
-		public void onStartup();
-	}
-
 	/**
 	 * @param race
 	 * @param i
@@ -371,18 +367,20 @@ public class GameServer {
 		try {
 			switch (race) {
 				case ASMODIANS:
-					GameServer.ASMOS_COUNT += i;
+					ASMOS_COUNT += i;
 					break;
 				case ELYOS:
-					GameServer.ELYOS_COUNT += i;
+					ELYOS_COUNT += i;
 					break;
 				default:
 					break;
 			}
 
 			computeRatios();
-		} catch (Exception e) {
-		} finally {
+		}
+		catch (Exception e) {
+		}
+		finally {
 			lock.unlock();
 		}
 
@@ -390,12 +388,13 @@ public class GameServer {
 	}
 
 	private static void computeRatios() {
-		if ((GameServer.ASMOS_COUNT <= GSConfig.FACTIONS_RATIO_MINIMUM)
-				&& (GameServer.ELYOS_COUNT <= GSConfig.FACTIONS_RATIO_MINIMUM)) {
-			GameServer.ASMOS_RATIO = GameServer.ELYOS_RATIO = 50.0;
-		} else {
-			GameServer.ASMOS_RATIO = GameServer.ASMOS_COUNT * 100.0 / (GameServer.ASMOS_COUNT + GameServer.ELYOS_COUNT);
-			GameServer.ELYOS_RATIO = GameServer.ELYOS_COUNT * 100.0 / (GameServer.ASMOS_COUNT + GameServer.ELYOS_COUNT);
+		if ((ASMOS_COUNT <= GSConfig.FACTIONS_RATIO_MINIMUM)
+				&& (ELYOS_COUNT <= GSConfig.FACTIONS_RATIO_MINIMUM)) {
+			ASMOS_RATIO = GameServer.ELYOS_RATIO = 50.0;
+		}
+		else {
+			ASMOS_RATIO = ASMOS_COUNT * 100.0 / (ASMOS_COUNT + ELYOS_COUNT);
+			ELYOS_RATIO = ELYOS_COUNT * 100.0 / (ASMOS_COUNT + ELYOS_COUNT);
 		}
 	}
 
@@ -407,9 +406,9 @@ public class GameServer {
 	public static double getRatiosFor(Race race) {
 		switch (race) {
 			case ASMODIANS:
-				return GameServer.ASMOS_RATIO;
+				return ASMOS_RATIO;
 			case ELYOS:
-				return GameServer.ELYOS_RATIO;
+				return ELYOS_RATIO;
 			default:
 				return 0.0;
 		}
@@ -418,11 +417,16 @@ public class GameServer {
 	public static int getCountFor(Race race) {
 		switch (race) {
 			case ASMODIANS:
-				return GameServer.ASMOS_COUNT;
+				return ASMOS_COUNT;
 			case ELYOS:
-				return GameServer.ELYOS_COUNT;
+				return ELYOS_COUNT;
 			default:
 				return 0;
 		}
+	}
+
+	public static abstract interface StartupHook {
+
+		public abstract void onStartup();
 	}
 }

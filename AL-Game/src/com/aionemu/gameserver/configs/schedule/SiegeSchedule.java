@@ -1,4 +1,4 @@
-package com.aionemu.gameserver.configs.shedule;
+package com.aionemu.gameserver.configs.schedule;
 
 import com.aionemu.commons.utils.xml.JAXBUtil;
 import java.io.File;

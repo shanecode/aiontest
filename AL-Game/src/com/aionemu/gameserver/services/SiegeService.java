@@ -19,7 +19,7 @@ package com.aionemu.gameserver.services;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.commons.services.CronService;
 import com.aionemu.gameserver.configs.main.SiegeConfig;
-import com.aionemu.gameserver.configs.shedule.SiegeSchedule;
+import com.aionemu.gameserver.configs.schedule.SiegeSchedule;
 import com.aionemu.gameserver.dao.SiegeDAO;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Npc;

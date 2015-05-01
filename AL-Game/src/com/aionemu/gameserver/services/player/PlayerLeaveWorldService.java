@@ -49,7 +49,6 @@ import com.aionemu.gameserver.services.drop.DropService;
 import com.aionemu.gameserver.services.instance.InstanceService;
 import com.aionemu.gameserver.services.teleport.TeleportService;
 import com.aionemu.gameserver.services.toypet.PetSpawnService;
-import com.aionemu.gameserver.services.tvt.TvtService;
 import com.aionemu.gameserver.taskmanager.tasks.ExpireTimerTask;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.audit.GMService;
@@ -113,9 +112,6 @@ public class PlayerLeaveWorldService {
 		else if (DuelService.getInstance().isDueling(player.getObjectId())) {
 			DuelService.getInstance().loseDuel(player);
 		}
-            /*    if (TvtService.getInstance().getTvtByLevel(player.getLevel()).getHolders().getPlayer(player)) {
-                   TvtService.getInstance().unRegPlayer(player);
-                }*/
 
 		if (player.getSummon() != null)
 			player.getSummon().getController().release(UnsummonType.LOGOUT);
@@ -184,5 +180,4 @@ public class PlayerLeaveWorldService {
 			}
 		}, delay);
 	}
-
-	}
+}

@@ -62,21 +62,4 @@ public class EventsConfig {
 	@Property(key = "gameserver.event.service.enable", defaultValue = "false")
 	public static boolean ENABLE_EVENT_SERVICE;
 	
-	/**
-	 *TvT Event configuration
-	 */
-	@Property(key = "gameserver.tvtevent.enable", defaultValue = "true")
-	public static boolean TVT_ENABLE;
-	@Property(key = "gameserver.tvtevent.min.players", defaultValue = "6")
-	public static int TVT_MIN_PLAYERS;
-	@Property(key = "gameserver.tvtevent.skill.use", defaultValue = "9833")
-	public static int TVT_SKILL_USE;
-        
-        @Property(key = "gameserver.tvtevent.winner.reward", defaultValue = "188051136")
-        public static int TVT_WINNER_REWARD;
-        @Property(key = "gameserver.tvtevent.winner.dublereward", defaultValue = "188051135")
-        public static int TVT_WINNER_DOUBLEREWARD;
-        @Property(key = "gameserver.tvtevent.winner.number", defaultValue = "1")
-        public static int TVT_WINNER_NUMBER;
-
 }
