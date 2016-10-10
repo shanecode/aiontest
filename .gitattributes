@@ -1,0 +1,2 @@
+AL-Game/build/Dist/AL-Game/data/static_data/npc_drops/npc_drops.xml filter=lfs -text
+AL-Game/data/static_data/npc_drops/npc_drops.xml filter=lfs -text
